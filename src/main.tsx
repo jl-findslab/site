@@ -8,7 +8,7 @@ import {App} from "@/pages/app";
 
 // 도메인 설정
 const PRIMARY_DOMAIN = 'jl-findslab.com';
-const FALLBACK_URL = 'https://jl-findslab.github.io/site';
+const FALLBACK_URL = 'https://findslab.github.io/site';
 
 // 현재 도메인 체크 및 basename 결정
 const currentHost = window.location.hostname;
