@@ -1,7 +1,4 @@
 User-agent: *
 Disallow:
 
-# User-agent: *
-# Allow: /
-
-Sitemap: https://quantumgravity.co.kr/sitemap.xml
+Sitemap: https://jl-findslab.com/sitemap.xml
