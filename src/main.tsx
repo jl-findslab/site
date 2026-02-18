@@ -7,7 +7,7 @@ import Snackbar from "@/components/atoms/snackbar";
 import {App} from "@/pages/app";
 
 // 도메인 설정
-const PRIMARY_DOMAIN = 'jl-findslab.com';
+const PRIMARY_DOMAIN = 'findslab.github.io';
 const FALLBACK_URL = 'https://findslab.github.io/site';
 
 // 현재 도메인 체크 및 basename 결정
