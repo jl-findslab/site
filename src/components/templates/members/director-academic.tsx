@@ -1873,8 +1873,9 @@ export const MembersDirectorAcademicTemplate = () => {
                             }
                             const Icon = typeIcons[project.type]
                             // Determine status
-                            const endDate = project.period.split('–')[1]?.trim()
-                            const isOngoing = endDate === 'Present' || endDate === '현재'
+                            const endDateStr = project.period.split('–')[1]?.trim()
+                            const endDate = endDateStr
+                            const isOngoing = endDateStr === 'Present' || endDateStr === '현재' || (endDateStr ? new Date(endDateStr) >= new Date() : false)
                             // Determine director's role
                             const getDirectorRole = () => {
                               if (project.roles.principalInvestigator === '최인수') return 'Principal Investigator'
