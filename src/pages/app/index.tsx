@@ -4,7 +4,7 @@ import "../../assets/css/font.css";
 
 import {Route, Routes, useLocation, Navigate, Link} from "react-router-dom";
 import {lazy, Suspense, useEffect, memo, useRef, useState} from "react";
-import { Music, Play, Pause, X, Home as HomeIcon, SkipBack, SkipForward, Minimize2, Maximize2 } from 'lucide-react'
+import { Music, Play, Pause, X, Home as HomeIcon, SkipBack, SkipForward, Minimize2, Maximize2, ListMusic } from 'lucide-react'
 import { useMusicPlayerStore } from '@/store/musicPlayer'
 
 const Home = lazy(() => import('../home').then((module) => ({ default: module.Home })));
@@ -55,7 +55,7 @@ interface YTPlayer {
 const GlobalMusicPlayer = memo(() => {
   const { 
     playlist, currentIndex, isPlaying, isMinimized, isLoaded,
-    setPlaylist, setIsLoaded, nextTrack, prevTrack, togglePlay, toggleMinimize, setIsPlaying
+    setPlaylist, setIsLoaded, setCurrentIndex, nextTrack, prevTrack, togglePlay, toggleMinimize, setIsPlaying
   } = useMusicPlayerStore()
   
   const playerRef = useRef<YTPlayer | null>(null)
@@ -65,6 +65,8 @@ const GlobalMusicPlayer = memo(() => {
   const shouldAutoPlayRef = useRef(false)
   const [isCompact, setIsCompact] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
+  const [showQueue, setShowQueue] = useState(false)
+  const queueRef = useRef<HTMLDivElement>(null)
   const location = useLocation()
 
   // Helper functions for prev/next with auto-play
@@ -212,6 +214,31 @@ const GlobalMusicPlayer = memo(() => {
     setIsHidden(true)
   }
 
+  const handlePlayFromQueue = (index: number) => {
+    shouldAutoPlayRef.current = true
+    setCurrentIndex(index)
+    setIsPlaying(true)
+    setShowQueue(false)
+  }
+
+  // Close queue on click outside
+  useEffect(() => {
+    if (!showQueue) return
+    const handler = (e: MouseEvent) => {
+      if (queueRef.current && !queueRef.current.contains(e.target as Node)) setShowQueue(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [showQueue])
+
+  // Auto-scroll to current track in queue
+  useEffect(() => {
+    if (showQueue && queueRef.current) {
+      const activeItem = queueRef.current.querySelector('[data-active="true"]')
+      if (activeItem) activeItem.scrollIntoView({ block: 'center', behavior: 'smooth' })
+    }
+  }, [showQueue, currentIndex])
+
   // 플레이어 안 보여줄 조건 - portfolio 페이지에서만 표시
   const hidePlayer = isHidden || playlist.length === 0 || isPlaylistPage || !isPortfolioPage
 
@@ -295,10 +322,73 @@ const GlobalMusicPlayer = memo(() => {
               </div>
             </div>
             <div className="flex items-center gap-6">
-              <button onClick={() => setIsCompact(true)} className="w-28 h-28 rounded-full bg-gray-800/80 flex items-center justify-center hover:bg-gray-700 transition-colors border border-gray-700/50" title="컴팩트"><Minimize2 className="w-12 h-12 text-gray-400" /></button>
-              <button onClick={toggleMinimize} className="w-28 h-28 rounded-full bg-gray-800/80 flex items-center justify-center hover:bg-gray-700 transition-colors border border-gray-700/50" title="접기"><X className="w-12 h-12 text-gray-400" /></button>
+              <button onClick={() => setShowQueue(!showQueue)} className={`w-28 h-28 rounded-full flex items-center justify-center transition-colors border ${showQueue ? 'bg-[#D6B14D]/20 border-[#D6B14D]/50 text-[#D6B14D]' : 'bg-gray-800/80 border-gray-700/50 text-gray-400 hover:bg-gray-700'}`} title="재생목록"><ListMusic className="w-12 h-12" /></button>
+              <button onClick={() => { setIsCompact(true); setShowQueue(false) }} className="w-28 h-28 rounded-full bg-gray-800/80 flex items-center justify-center hover:bg-gray-700 transition-colors border border-gray-700/50" title="컴팩트"><Minimize2 className="w-12 h-12 text-gray-400" /></button>
+              <button onClick={() => { toggleMinimize(); setShowQueue(false) }} className="w-28 h-28 rounded-full bg-gray-800/80 flex items-center justify-center hover:bg-gray-700 transition-colors border border-gray-700/50" title="접기"><X className="w-12 h-12 text-gray-400" /></button>
             </div>
           </div>
+
+          {/* Queue Panel */}
+          {showQueue && (
+            <div ref={queueRef} className="border-b border-gray-800/50 bg-gray-950/95 backdrop-blur-sm">
+              <div className="flex items-center justify-between px-20 py-10 border-b border-gray-800/30">
+                <div className="flex items-center gap-8">
+                  <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Queue</span>
+                  <span className="text-[10px] text-gray-600 font-medium">{playlist.length} tracks</span>
+                </div>
+                <button onClick={() => setShowQueue(false)} className="text-gray-600 hover:text-gray-400 transition-colors p-4"><X className="w-10 h-10" /></button>
+              </div>
+              <div className="max-h-[240px] overflow-y-auto overscroll-contain" style={{scrollbarWidth: 'thin', scrollbarColor: '#374151 transparent'}}>
+                {trackInfo.map((track, index) => {
+                  const isCurrent = index === currentIndex
+                  const isUpcoming = index > currentIndex
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => handlePlayFromQueue(index)}
+                      data-active={isCurrent ? 'true' : undefined}
+                      className={`w-full flex items-center gap-12 px-20 py-10 text-left transition-all duration-150 group ${
+                        isCurrent
+                          ? 'bg-[#D6B14D]/10'
+                          : 'hover:bg-white/[0.03]'
+                      }`}
+                    >
+                      {/* Track number / playing indicator */}
+                      <div className="w-24 flex items-center justify-center shrink-0">
+                        {isCurrent && isPlaying ? (
+                          <div className="flex items-center gap-[2px]">
+                            <div className="w-[2px] h-8 rounded-full animate-pulse" style={{backgroundColor: '#D6B14D', animationDelay: '0ms'}} />
+                            <div className="w-[2px] h-12 rounded-full animate-pulse" style={{backgroundColor: '#D6B14D', animationDelay: '150ms'}} />
+                            <div className="w-[2px] h-6 rounded-full animate-pulse" style={{backgroundColor: '#D6B14D', animationDelay: '300ms'}} />
+                          </div>
+                        ) : isCurrent ? (
+                          <Pause className="w-10 h-10" style={{color: '#D6B14D'}} />
+                        ) : (
+                          <>
+                            <span className="text-[11px] text-gray-600 font-medium group-hover:hidden">{index + 1}</span>
+                            <Play className="w-10 h-10 text-gray-500 hidden group-hover:block" />
+                          </>
+                        )}
+                      </div>
+                      {/* Artist + Title */}
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-[11px] font-semibold truncate ${isCurrent ? 'text-white' : isUpcoming ? 'text-gray-300' : 'text-gray-500'}`}>
+                          {track.title}
+                        </p>
+                        <p className={`text-[10px] truncate ${isCurrent ? 'text-[#D6B14D]' : 'text-gray-600'}`}>
+                          {track.artist}
+                        </p>
+                      </div>
+                      {/* Current indicator dot */}
+                      {isCurrent && (
+                        <div className="w-6 h-6 rounded-full shrink-0" style={{backgroundColor: '#D6B14D', boxShadow: '0 0 8px rgba(214,177,77,0.5)'}} />
+                      )}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
 
           {currentTrack && (
             <div className="px-16 py-12 border-b border-gray-800/50 overflow-hidden">
