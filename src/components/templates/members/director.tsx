@@ -1013,55 +1013,55 @@ export const MembersDirectorTemplate = () => {
               {expandedSections.publicationOverview && (
                 <div className="p-20 md:p-24 border-t border-gray-100">
                   {/* Total - Full Width */}
-                  <div className="mb-16 md:mb-24">
-                    <div className="text-center p-16 md:p-20 bg-[#FFF9E6] border border-[#D6B14D]/20 rounded-xl hover:border-[#D6B14D]/40 transition-colors">
-                      <div className="text-3xl md:text-4xl font-bold" style={{color: '#9A7D1F'}}>{totalPubs}</div>
-                      <div className="text-xs md:text-sm font-bold text-gray-500 uppercase mt-6">Total</div>
+                  <div className="group relative bg-[#FFF9E6] border border-[#D6B14D]/20 rounded-2xl p-16 md:p-20 hover:border-[#D6B14D]/40 hover:shadow-lg hover:shadow-[#D6B14D]/10 transition-all duration-300 mb-8 md:mb-12">
+                    <div className="absolute top-0 left-16 right-16 h-[2px] bg-gradient-to-r from-[#D6B14D]/60 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="flex flex-col items-center justify-center">
+                      <span className="text-3xl md:text-4xl font-bold mb-4 transition-all duration-300" style={{color: '#9A7D1F'}}>{totalPubs}</span>
+                      <span className="text-[10px] md:text-sm font-semibold text-gray-500">Total</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-8 md:gap-12 mb-16 md:mb-24">
                     {pubStats.map((stat, index) => {
                       const getColors = (label: string) => {
                         switch(label) {
-                          case 'SCIE':
-                          case 'SSCI':
-                          case 'A&HCI':
-                            return { hover: 'hover:bg-[#D6B14D]/10', text: 'text-[#D6B14D]' }
-                          case 'ESCI':
-                          case 'Scopus':
-                            return { hover: 'hover:bg-[#D6C360]/10', text: 'text-[#D6C360]' }
-                          case 'Other Int\'l':
-                            return { hover: 'hover:bg-[#E8D688]/10', text: 'text-[#9A7D1F]' }
-                          case 'Int\'l Conf':
-                            return { hover: 'hover:bg-[#AC0E0E]/10', text: 'text-[#AC0E0E]' }
-                          case 'Dom. Conf':
-                            return { hover: 'hover:bg-[#E8889C]/15', text: 'text-[#E8889C]' }
-                          case 'KCI':
-                            return { hover: 'hover:bg-[#64748b]/10', text: 'text-[#64748b]' }
-                          default:
-                            return { hover: 'hover:bg-[#D6B14D]/10', text: 'text-primary' }
+                          case 'SCIE': case 'SSCI': case 'A&HCI': return { color: '#D6B14D' }
+                          case 'ESCI': case 'Scopus': return { color: '#D6C360' }
+                          case 'Other Int\'l': return { color: '#9A7D1F' }
+                          case 'Int\'l Conf': return { color: '#AC0E0E' }
+                          case 'Dom. Conf': return { color: '#E8889C' }
+                          case 'KCI': return { color: '#64748b' }
+                          default: return { color: '#D6B14D' }
                         }
                       }
-                      const colors = getColors(stat.label)
                       return (
-                      <div key={index} className={`text-center p-12 md:p-16 bg-gray-50 rounded-xl ${colors.hover} transition-colors`}>
-                        <div className={`text-lg md:text-xl font-bold ${colors.text}`}>{stat.count}</div>
-                        <div className="text-[10px] md:text-xs font-bold text-gray-400 uppercase mt-4">{stat.label}</div>
+                      <div key={index} className="group relative bg-white border border-gray-100 rounded-2xl p-12 md:p-16 hover:shadow-lg transition-all duration-300"
+                        onMouseEnter={(e) => { const c = getColors(stat.label).color; e.currentTarget.style.borderColor = c + '66'; e.currentTarget.style.boxShadow = '0 10px 15px -3px ' + c + '1a' }}
+                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#f3f4f6'; e.currentTarget.style.boxShadow = 'none' }}
+                      >
+                        <div className="absolute top-0 left-12 right-12 h-[2px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" style={{background: `linear-gradient(to right, ${getColors(stat.label).color}99, transparent)`}} />
+                        <div className="flex flex-col items-center text-center">
+                          <span className="text-lg md:text-xl font-bold mb-2" style={{color: getColors(stat.label).color}}>{stat.count}</span>
+                          <span className="text-[10px] md:text-xs font-medium text-gray-500">{stat.label}</span>
+                        </div>
                       </div>
                     )})}
                   </div>
                   <div className="pt-16 border-t border-gray-100">
-                    <div className="mb-12">
-                      <div className="text-center p-20 md:p-28 bg-[#FFF9E6] border border-[#D6B14D]/20 rounded-xl hover:border-[#D6B14D]/40 transition-colors">
-                        <div className="text-3xl md:text-4xl font-bold" style={{color: '#9A7D1F'}}>{liveCitationStats[0]?.count || 0}</div>
-                        <div className="text-xs md:text-sm font-bold text-gray-500 uppercase mt-6">{liveCitationStats[0]?.label || 'Citations'}</div>
+                    <div className="group relative bg-[#FFF9E6] border border-[#D6B14D]/20 rounded-2xl p-16 md:p-20 hover:border-[#D6B14D]/40 hover:shadow-lg hover:shadow-[#D6B14D]/10 transition-all duration-300 mb-8 md:mb-12">
+                      <div className="absolute top-0 left-16 right-16 h-[2px] bg-gradient-to-r from-[#D6B14D]/60 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="flex flex-col items-center justify-center">
+                        <span className="text-3xl md:text-4xl font-bold mb-4 transition-all duration-300" style={{color: '#9A7D1F'}}>{liveCitationStats[0]?.count || 0}</span>
+                        <span className="text-[10px] md:text-sm font-semibold text-gray-500">{liveCitationStats[0]?.label || 'Citations'}</span>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
                       {liveCitationStats.slice(1).map((stat, index) => (
-                        <div key={index} className="text-center p-16 md:p-20 bg-[#FFF9E6] border border-[#D6B14D]/20 rounded-xl hover:border-[#D6B14D]/40 transition-colors">
-                          <div className="text-xl md:text-2xl font-bold text-primary">{stat.count}</div>
-                          <div className="text-[9px] md:text-xs font-bold text-gray-500 uppercase mt-4">{stat.label}</div>
+                        <div key={index} className="group relative bg-white border border-gray-100 rounded-2xl p-16 md:p-20 hover:border-[#D6B14D]/40 hover:shadow-lg hover:shadow-[#D6B14D]/10 transition-all duration-300">
+                          <div className="absolute top-0 left-16 right-16 h-[2px] bg-gradient-to-r from-[#D6B14D]/60 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div className="flex flex-col items-center text-center">
+                            <span className="text-2xl md:text-3xl font-bold mb-4" style={{color: '#D6B14D'}}>{stat.count}</span>
+                            <span className="text-[10px] md:text-xs font-medium text-gray-500">{stat.label}</span>
+                          </div>
                         </div>
                       ))}
                     </div>
