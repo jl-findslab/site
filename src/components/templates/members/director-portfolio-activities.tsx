@@ -1311,7 +1311,7 @@ export const MembersDirectorPortfolioActivitiesTemplate = () => {
     const getFilteredCount = (m: MenteeWithId) => {
       if (selectedMentoringYear === 'all') return m.participationYears.length
       return m.participationYears.filter(py => {
-        const y = typeof py === 'string' ? py.split('-')[0] : py.year.split('-')[0]
+        const y = py.year.split('-')[0]
         return Number(y) <= Number(selectedMentoringYear)
       }).length
     }
@@ -1999,7 +1999,7 @@ export const MembersDirectorPortfolioActivitiesTemplate = () => {
                                   selectedMentoringYear === 'all'
                                     ? mentee.participationYears.length
                                     : mentee.participationYears.filter(py => {
-                                        const y = typeof py === 'string' ? py.split('-')[0] : py.year.split('-')[0]
+                                        const y = py.year.split('-')[0]
                                         return Number(y) <= Number(selectedMentoringYear)
                                       }).length
                                 }</span>
