@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://jl-findslab.com/sitemap.xml
+Sitemap: https://findslab.github.io/site/sitemap.xml
