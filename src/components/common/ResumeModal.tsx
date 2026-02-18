@@ -6,6 +6,7 @@ const ResumeModal = () => (
       <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-6">Insu Choi</h2>
       <p className="text-sm text-gray-600"><span className="font-bold">Assistant Professor</span>, Gachon University</p>
       <p className="text-sm text-gray-600"><span className="font-bold">Director</span>, FINDS Lab</p>
+      <p className="text-sm text-gray-600"><span className="font-bold">Director</span>, JL Creatives & Contents</p>
     </div>
 
     {/* Academic Positions */}
