@@ -1308,9 +1308,16 @@ export const MembersDirectorPortfolioActivitiesTemplate = () => {
     }
     
     // 정렬: 참여연차 많은 순 → 이름 가나다순
+    const getFilteredCount = (m: MenteeWithId) => {
+      if (selectedMentoringYear === 'all') return m.participationYears.length
+      return m.participationYears.filter(py => {
+        const y = typeof py === 'string' ? py.split('-')[0] : py.year.split('-')[0]
+        return Number(y) <= Number(selectedMentoringYear)
+      }).length
+    }
     result.sort((a, b) => {
-      const aYears = a.participationYears.length
-      const bYears = b.participationYears.length
+      const aYears = getFilteredCount(a)
+      const bYears = getFilteredCount(b)
       if (aYears !== bYears) return bYears - aYears
       return a.name.localeCompare(b.name, 'ko')
     })
@@ -1988,7 +1995,14 @@ export const MembersDirectorPortfolioActivitiesTemplate = () => {
                           <div className="flex items-center justify-between md:flex-row">
                             <div className="flex items-center gap-12 md:gap-16">
                               <div className="size-36 md:size-40 rounded-full flex items-center justify-center shrink-0" style={{backgroundColor: 'rgba(255,183,197,0.2)'}}>
-                                <span className="text-sm md:text-base font-bold" style={{color: 'rgb(172,14,14)'}}>{mentee.participationYears.length}</span>
+                                <span className="text-sm md:text-base font-bold" style={{color: 'rgb(172,14,14)'}}>{
+                                  selectedMentoringYear === 'all'
+                                    ? mentee.participationYears.length
+                                    : mentee.participationYears.filter(py => {
+                                        const y = typeof py === 'string' ? py.split('-')[0] : py.year.split('-')[0]
+                                        return Number(y) <= Number(selectedMentoringYear)
+                                      }).length
+                                }</span>
                               </div>
                               <div className="min-w-0">
                                 <p className="text-sm md:text-base font-bold text-gray-900">{mentee.name}</p>
