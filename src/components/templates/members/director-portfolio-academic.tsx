@@ -1596,35 +1596,46 @@ export const MembersDirectorPortfolioAcademicTemplate = () => {
               {expandedSections.publications && (
                 <div className="border-t border-gray-100 p-20 md:p-24 flex flex-col gap-16 md:gap-24">
                   {/* Total - Full Width */}
-                  <div className="group relative bg-[#FFF9E6] border border-[#D6B14D]/20 rounded-2xl p-16 md:p-20 hover:border-[#D6B14D]/40 hover:shadow-lg hover:shadow-[#D6B14D]/10 transition-all duration-300">
-                    <div className="absolute top-0 left-16 right-16 h-[2px] bg-gradient-to-r from-[#D6B14D]/60 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="flex flex-col items-center justify-center">
-                      <span className="text-3xl md:text-4xl font-bold mb-4 transition-all duration-300" style={{color: '#9A7D1F'}}>{totalPubs}</span>
-                      <span className="text-xs md:text-sm font-medium text-gray-600">Total</span>
-                    </div>
+                  <div className="text-center p-16 md:p-20 bg-[#FFF9E6] border border-[#D6B14D]/20 rounded-xl hover:border-[#D6B14D]/40 transition-colors">
+                    <div className="text-3xl md:text-4xl font-bold" style={{color: '#9A7D1F'}}>{totalPubs}</div>
+                    <div className="text-xs md:text-sm font-bold text-gray-500 uppercase mt-6">Total</div>
                   </div>
 
-                  {/* Publication Stats Grid */}
-                  <div className="grid grid-cols-3 gap-8 md:gap-12">
-                    {pubStats.map((stat, index) => (
-                      <div
-                        key={index}
-                        className="group relative bg-white border rounded-2xl p-12 md:p-16 transition-all duration-300 hover:shadow-lg"
-                        style={{ borderColor: '#f3f4f6' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#D6B14D50'; e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(214, 177, 77, 0.08)' }}
-                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#f3f4f6'; e.currentTarget.style.boxShadow = 'none' }}
-                      >
-                        <div className="absolute top-0 left-12 right-12 h-[2px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" style={{background: 'linear-gradient(to right, rgba(214, 177, 77, 0.6), transparent)'}} />
-                        <div className="flex flex-col items-center text-center pt-4">
-                          <span className="text-xl md:text-2xl font-bold mb-2 transition-all duration-300" style={{color: '#9A7D1F'}}>{stat.count}</span>
-                          <span className="text-[10px] md:text-xs font-medium text-gray-500">{stat.label}</span>
-                        </div>
+                  {/* Publication Stats Grid - Colored */}
+                  <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-8 md:gap-12">
+                    {pubStats.map((stat, index) => {
+                      const getColors = (label: string) => {
+                        switch(label) {
+                          case 'SCIE':
+                          case 'SSCI':
+                          case 'A&HCI':
+                            return { hover: 'hover:bg-[#D6B14D]/10', text: 'text-[#D6B14D]' }
+                          case 'ESCI':
+                          case 'Scopus':
+                            return { hover: 'hover:bg-[#D6C360]/10', text: 'text-[#D6C360]' }
+                          case 'Other Int\'l':
+                            return { hover: 'hover:bg-[#E8D688]/10', text: 'text-[#9A7D1F]' }
+                          case 'Int\'l Conf':
+                            return { hover: 'hover:bg-[#AC0E0E]/10', text: 'text-[#AC0E0E]' }
+                          case 'Dom. Conf':
+                            return { hover: 'hover:bg-[#E8889C]/15', text: 'text-[#E8889C]' }
+                          case 'KCI':
+                            return { hover: 'hover:bg-[#64748b]/10', text: 'text-[#64748b]' }
+                          default:
+                            return { hover: 'hover:bg-[#D6B14D]/10', text: 'text-primary' }
+                        }
+                      }
+                      const colors = getColors(stat.label)
+                      return (
+                      <div key={index} className={`text-center p-12 md:p-16 bg-gray-50 rounded-xl ${colors.hover} transition-colors`}>
+                        <div className={`text-lg md:text-xl font-bold ${colors.text}`}>{stat.count}</div>
+                        <div className="text-[10px] md:text-xs font-bold text-gray-400 uppercase mt-4">{stat.label}</div>
                       </div>
-                    ))}
+                    )})}
                   </div>
 
-                  <div className="text-center">
-                    <Link to="/publications?author=Insu Choi" className="inline-flex items-center gap-6 px-20 py-10 rounded-full border border-[#D6B14D]/30 text-sm font-semibold hover:bg-[#FFF9E6] hover:border-[#D6B14D]/60 transition-all duration-300" style={{color: '#9A7D1F'}}>
+                  <div className="mt-4 text-center">
+                    <Link to="/publications?author=Insu Choi" className="inline-flex items-center gap-4 text-sm text-primary font-medium hover:underline">
                       View All Publications <ChevronRight size={14}/>
                     </Link>
                   </div>

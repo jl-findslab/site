@@ -291,6 +291,7 @@ export const MembersDirectorTemplate = () => {
     {label: 'ESCI', count: 0}, {label: 'Scopus', count: 0}, {label: 'Other Int\'l', count: 0},
     {label: 'KCI', count: 0}, {label: 'Int\'l Conf', count: 0}, {label: 'Dom. Conf', count: 0}
   ])
+  const [totalPubs, setTotalPubs] = useState(0)
   const [scholarData, setScholarData] = useState<ScholarData | null>(null)
   
   // Live citation stats (from Google Scholar or fallback)
@@ -350,6 +351,7 @@ export const MembersDirectorTemplate = () => {
           }
         })
         
+        setTotalPubs(pubs.length)
         setPubStats([
           {label: 'SCIE', count: stats.scie},
           {label: 'SSCI', count: stats.ssci},
@@ -1010,6 +1012,13 @@ export const MembersDirectorTemplate = () => {
               </button>
               {expandedSections.publicationOverview && (
                 <div className="p-20 md:p-24 border-t border-gray-100">
+                  {/* Total - Full Width */}
+                  <div className="mb-16 md:mb-24">
+                    <div className="text-center p-16 md:p-20 bg-[#FFF9E6] border border-[#D6B14D]/20 rounded-xl hover:border-[#D6B14D]/40 transition-colors">
+                      <div className="text-3xl md:text-4xl font-bold" style={{color: '#9A7D1F'}}>{totalPubs}</div>
+                      <div className="text-xs md:text-sm font-bold text-gray-500 uppercase mt-6">Total</div>
+                    </div>
+                  </div>
                   <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-8 md:gap-12 mb-16 md:mb-24">
                     {pubStats.map((stat, index) => {
                       const getColors = (label: string) => {
