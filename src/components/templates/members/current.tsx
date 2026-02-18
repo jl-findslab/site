@@ -448,7 +448,7 @@ export const MembersCurrentTemplate = () => {
                             >
                               {member.avatar ? (
                                 <img
-                                  src={member.avatar.replace('/assets/img/', `${baseUrl}images/`)}
+                                  src={member.avatar.replace('/assets/img/', `${baseUrl}images/`).replace('/website/', `${baseUrl}`)}
                                   alt={member.name.ko}
                                   className="w-full h-full object-cover object-top pointer-events-none"
                                   draggable={false}

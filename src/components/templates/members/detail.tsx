@@ -235,7 +235,7 @@ export const MembersDetailTemplate = ({memberId}: Props) => {
                 >
                   {member.avatar ? (
                     <img
-                      src={member.avatar.replace('/assets/img/', `${baseUrl}images/`)}
+                      src={member.avatar.replace('/assets/img/', `${baseUrl}images/`).replace('/website/', `${baseUrl}`)}
                       alt={member.name.ko}
                       className="w-full h-full object-cover pointer-events-none"
                       draggable={false}
