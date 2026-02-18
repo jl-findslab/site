@@ -180,7 +180,7 @@
         "published_date": "2026-04-24",
         "year": 2026,
         "title": "Moving Beyond Technological Determinism in Financial Services",
-        "title_ko": "금융 서비스에서의 신뢰·AI·포용적 설계에 관한 문헌 연구: 기술 결정론적 관점의 재검토(2016~2026)",
+        "title_ko": "금융 서비스에서의 신뢰·AI·포용적 설계에 관한 문헌 연구",
         "authors": [
             1
         ],
@@ -198,7 +198,7 @@
             "chicago": "Choi, Insu. \"Moving Beyond Technological Determinism in Financial Services.\" Oral presentation at the 2026 Spring Conference of the Korean Association for Policy Studies (KAPS), Jun. 2026.",
             "harvard": "Choi, I. (2026) 'moving Beyond Technological Determinism in Financial Services', oral presentation at the 2026 Spring Conference of the Korean Association for Policy Studies (KAPS), Jun..",
             "vancouver": "Choi I. moving Beyond Technological Determinism in Financial Services. Oral presentation at: 2026 Spring Conference of the Korean Association for Policy Studies (KAPS); 2026 Jun..",
-            "korean": "최인수. (2026). 금융 서비스에서의 신뢰·AI·포용적 설계에 관한 문헌 연구: 기술 결정론적 관점의 재검토(2016~2026). 2026 한국정책학회 춘계학술대회 발표논문.",
+            "korean": "최인수. (2026). 금융 서비스에서의 신뢰·AI·포용적 설계에 관한 문헌 연구. 2026 한국정책학회 춘계학술대회 발표논문.",
             "bibtex": "@inproceedings{choi2026moving,\n  title = {{Moving Beyond Technological Determinism in Financial Services}},\n  author = {Choi, I.},\n  booktitle = {2026 Spring Conference of the Korean Association for Policy Studies (KAPS)},\n  year = {2026},\n}"
         }
     },
