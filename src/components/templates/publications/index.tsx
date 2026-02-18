@@ -225,7 +225,7 @@ const CitationModal = ({ citation }: { citation: Publication['citations'] }) => 
         return (
           <div key={format.key} className="flex flex-col gap-8">
             <div className="flex items-center justify-between">
-              <span className={`text-sm font-bold uppercase tracking-wider ${format.key === 'bibtex' ? 'text-primary' : 'text-gray-900'}`}>{format.label}</span>
+              <span className="text-sm font-bold uppercase tracking-wider text-gray-900">{format.label}</span>
               <button
                 onClick={() => handleCopy(text, format.key)}
                 className="flex items-center gap-4 text-xs font-medium text-primary hover:underline"

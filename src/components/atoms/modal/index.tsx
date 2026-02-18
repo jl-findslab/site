@@ -28,6 +28,10 @@ const Modal = ({title, children}: { title?: string, children?: ReactNode }) => {
         scrollYRef.current = window.scrollY;
       }
       
+      // Compensate for scrollbar width to prevent layout shift
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      body.style.paddingRight = `${scrollbarWidth}px`;
+      
       // Apply scroll lock
       body.style.overflow = 'hidden';
       body.style.position = 'fixed';
@@ -47,6 +51,7 @@ const Modal = ({title, children}: { title?: string, children?: ReactNode }) => {
       body.style.left = '';
       body.style.right = '';
       body.style.width = '';
+      body.style.paddingRight = '';
       html.style.overflow = '';
       
       // Restore scroll position
