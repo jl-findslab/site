@@ -2011,13 +2011,13 @@ export const MembersDirectorPortfolioAcademicTemplate = () => {
                                   <div className="flex items-center gap-8">
                                     {/* Type | Role Label */}
                                     <span className={`text-[9px] font-bold tracking-wide ${
-                                      project.type === 'institution' ? 'text-gray-800' : 'text-white'
+                                      'text-white'
                                     }`}>
                                       {typeLabels[project.type]} Project
                                     </span>
-                                    <span className={`w-px h-12 ${project.type === 'institution' ? 'bg-gray-400' : 'bg-white/50'}`} />
+                                    <span className={`w-px h-12 ${'bg-white/50'}`} />
                                     <span className={`text-[9px] font-bold tracking-wide ${
-                                      project.type === 'institution' ? 'text-gray-800' : 'text-white'
+                                      'text-white'
                                     }`}>
                                       {directorRole}
                                     </span>
