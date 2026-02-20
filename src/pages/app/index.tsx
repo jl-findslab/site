@@ -331,10 +331,11 @@ const GlobalMusicPlayer = memo(() => {
           {/* Queue Panel */}
           {showQueue && (
             <div ref={queueRef} className="border-b border-gray-800/50 bg-gray-950/95 backdrop-blur-sm">
-              <div className="flex items-center justify-between px-20 py-10 border-b border-gray-800/30">
-                <div className="flex items-center gap-8">
-                  <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Queue</span>
-                  <span className="text-[10px] text-gray-600 font-medium">{playlist.length} tracks</span>
+              <div className="flex items-center justify-between px-20 py-12 border-b border-gray-800/30">
+                <div className="flex items-center gap-10">
+                  <span className="text-[11px] font-semibold tracking-wider" style={{color: '#D6B14D'}}>Queue</span>
+                  <span className="text-[10px] text-gray-600">·</span>
+                  <span className="text-[10px] text-gray-500 font-medium tabular-nums">{playlist.length} tracks</span>
                 </div>
                 <button onClick={() => setShowQueue(false)} className="text-gray-600 hover:text-gray-400 transition-colors p-4"><X className="w-10 h-10" /></button>
               </div>
