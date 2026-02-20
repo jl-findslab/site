@@ -334,7 +334,7 @@ export const HomeTemplate = () => {
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative h-full flex flex-col items-center justify-center text-center text-white px-16">
           <img loading="eager" src={logoFinds} alt="FINDS Lab" 
-            className={`w-80 md:w-112 h-auto mb-16 md:mb-24 transition-all duration-700 ${logoTapped ? '' : 'brightness-0 invert'} md:brightness-0 md:invert md:hover:brightness-100 md:hover:invert-0`}
+            className={`w-80 md:w-112 h-auto mb-16 md:mb-24 transition-all duration-700 cursor-pointer ${logoTapped ? '' : 'brightness-0 invert'} ${!logoTapped ? 'md:hover:brightness-100 md:hover:invert-0' : ''}`}
             onClick={() => setLogoTapped(prev => !prev)}
           />
           <h2 className="text-xl md:text-2xl font-semibold text-primary mb-8">FINDS Lab</h2>

@@ -857,7 +857,6 @@ export const MembersDirectorTemplate = () => {
                         <h4 className="text-sm md:text-base font-bold text-gray-900">{edu.degree.includes("(Ph.D.") ? <>{edu.degree.split(" (")[0]}<br className="md:hidden" /><span className="text-sm md:text-base text-gray-900 font-bold"> ({edu.degree.split(" (")[1]}</span></> : edu.degree}</h4>
                         <p className="text-xs md:text-sm text-gray-500 font-bold break-words">{edu.school}</p>
                         <p className="text-[10px] md:text-sm font-medium text-gray-600 break-words">{edu.field}</p>
-                        <p className="text-xs md:text-sm text-gray-500 break-words">{edu.college}</p>
                       </div>
                     </div>
                   </div>
