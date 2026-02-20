@@ -118,7 +118,7 @@ const education = [
     school: 'Korea Advanced Institute of Science and Technology (KAIST)',
     period: '2025-02',
     degree: 'Doctor of Philosophy in Engineering (Ph.D. in Engineering)',
-    field: 'Department of Industrial and Systems Engineering',
+    field: 'Industrial and Systems Engineering',
     college: 'College of Engineering',
     dissertation: {
       en: 'LUCIDE: A Lucid, User-Centric, Intelligent, Data-Inspired, End-to-End System Framework for Illustrative Decision-Making in Financial Asset Management Services — Orchestrating Transparency-Oriented Financial Investment Solutions via Empirical Evidence and Clairvoyant-Guided Approaches from Iridescent and Analytical Perspectives',
@@ -139,7 +139,7 @@ const education = [
     school: 'Korea Advanced Institute of Science and Technology (KAIST)',
     period: '2021-02',
     degree: 'Master of Science (M.S.)',
-    field: 'Department of Industrial and Systems Engineering',
+    field: 'Industrial and Systems Engineering',
     college: 'College of Engineering',
     thesis: {
       en: 'Empirical Analysis of Politically-Themed Stocks Using Text Mining Techniques and Entropy-Based Network Dynamics — Focus on the Republic of Korea\'s Case',
@@ -157,7 +157,7 @@ const education = [
     school: 'Kyung Hee University',
     period: '2018-02',
     degree: 'Bachelor of Engineering (B.E.)',
-    field: 'Department of Industrial and Management Systems Engineering',
+    field: 'Industrial and Management Systems Engineering',
     college: 'College of Engineering',
     advisors: [
       {name: 'Jang Ho Kim', url: 'https://scholar.google.com/citations?user=uTiqWBMAAAAJ&hl=en'},
