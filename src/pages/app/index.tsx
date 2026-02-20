@@ -334,8 +334,7 @@ const GlobalMusicPlayer = memo(() => {
               <div className="flex items-center justify-between px-20 py-12 border-b border-gray-800/30">
                 <div className="flex items-center gap-10">
                   <span className="text-[11px] font-semibold tracking-wider" style={{color: '#D6B14D'}}>Queue</span>
-                  <span className="text-[10px] text-gray-600">·</span>
-                  <span className="text-[10px] text-gray-500 font-medium tabular-nums">{playlist.length} tracks</span>
+                  <span className="px-8 py-2 rounded-full text-[10px] font-bold tabular-nums" style={{backgroundColor: 'rgba(214,177,77,0.12)', color: '#D6B14D'}}>{playlist.length}</span>
                 </div>
                 <button onClick={() => setShowQueue(false)} className="text-gray-600 hover:text-gray-400 transition-colors p-4"><X className="w-10 h-10" /></button>
               </div>
