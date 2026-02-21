@@ -1558,14 +1558,14 @@ export const MembersDirectorAcademicTemplate = () => {
               </button>
               {expandedSections.academicService && (
                 <div className="border-t border-gray-100">
-                  {/* Editorial Board Memberships */}
+                  {/* Editorial Service */}
                   <div className="border-b border-gray-100">
                     <button
                       onClick={() => toggleSection('editorialBoard')}
                       className="w-full flex items-center justify-between p-16 md:p-20 hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex items-center gap-8">
-                        <p className="text-sm md:text-base font-bold text-gray-900">Editorial Board Memberships</p>
+                        <p className="text-sm md:text-base font-bold text-gray-900">Editorial Service</p>
                       </div>
                       <ChevronDown size={16} className={`text-gray-400 transition-transform duration-300 ${expandedSections.editorialBoard ? 'rotate-180' : ''}`}/>
                     </button>

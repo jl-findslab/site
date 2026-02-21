@@ -1175,12 +1175,12 @@ export const MembersDirectorTemplate = () => {
                     </div>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
-                    {/* Editorial Board Memberships */}
+                    {/* Editorial Service */}
                     <div className="group relative bg-white border border-gray-100 rounded-2xl p-16 md:p-20 hover:border-[#D6B14D]/40 hover:shadow-lg hover:shadow-[#D6B14D]/10 transition-all duration-300">
                       <div className="absolute top-0 left-16 right-16 h-[2px] bg-gradient-to-r from-[#D6B14D]/60 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                       <div className="flex flex-col items-center text-center">
                         <span className="text-2xl md:text-3xl font-bold mb-4 transition-all duration-300" style={{color: '#D6B14D'}}>{serviceStats.editorial}</span>
-                        <span className="text-[10px] md:text-xs font-medium text-gray-500">Editorial Board</span>
+                        <span className="text-[10px] md:text-xs font-medium text-gray-500">Editorial Service</span>
                       </div>
                     </div>
                     {/* Academic Memberships */}
