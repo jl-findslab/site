@@ -195,6 +195,23 @@ const employment = [
 
 export const MembersDirectorTemplate = () => {
   const [emailCopied, setEmailCopied] = useState(false)
+  const [devMode, setDevMode] = useState(false)
+  const devKeysRef = useRef<Set<string>>(new Set())
+
+  // J+L secret combo to show portfolio link
+  useEffect(() => {
+    const onDown = (e: KeyboardEvent) => {
+      devKeysRef.current.add(e.key.toLowerCase())
+      if (devKeysRef.current.has('j') && devKeysRef.current.has('l')) {
+        e.preventDefault()
+        setDevMode(prev => !prev)
+      }
+    }
+    const onUp = (e: KeyboardEvent) => { devKeysRef.current.delete(e.key.toLowerCase()) }
+    window.addEventListener('keydown', onDown)
+    window.addEventListener('keyup', onUp)
+    return () => { window.removeEventListener('keydown', onDown); window.removeEventListener('keyup', onUp) }
+  }, [])
   const [projects, setProjects] = useState<Project[]>([])
   const [lectures, setLectures] = useState<Lecture[]>([])
   const [projectSearchTerm, setProjectSearchTerm] = useState('')
@@ -726,12 +743,14 @@ export const MembersDirectorTemplate = () => {
                   Scholar <ExternalLink size={12}/>
                 </a>
               </div>
+              {devMode && (
               <Link 
                 to="/members/director/portfolio/profile"
                 className="flex items-center justify-center gap-4 mt-8 py-10 bg-white border border-gray-200 text-gray-500 text-xs font-medium rounded-xl hover:bg-gray-50 hover:text-gray-700 transition-all"
               >
                 View Full Portfolio <ChevronRight size={12}/>
               </Link>
+              )}
             </div>
           </aside>
 

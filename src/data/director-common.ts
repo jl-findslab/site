@@ -47,7 +47,7 @@ export const researchInterests = [
     categoryKo: '비즈니스 애널리틱스',
     items: [
       'Data-driven value through industrial convergence',
-      'Structuring knowledge systems for data clarity',
+      'Structured knowledge systems for data clarity',
       'Actionable management insights via data science'
     ],
     itemsKo: [
@@ -60,9 +60,9 @@ export const researchInterests = [
     category: 'Data-Informed Decision Making',
     categoryKo: '데이터 기반 의사결정',
     items: [
-      'Designing trustworthy intelligent decision systems',
+      'Trustworthy intelligent decision system design',
       'Risk-aware decision tools for business and industry',
-      'Strategic decision making via multi-perspective insights'
+      'Interdisciplinary approaches to strategic decisions'
     ],
     itemsKo: [
       '신뢰할 수 있는 지능형 의사결정 시스템 설계 및 최적화',

@@ -43,7 +43,7 @@ const researchAreas = [
         ko: '산업 간 융합을 촉진하는 데이터 기반 가치 창출',
       },
       {
-        en: 'Structuring knowledge systems for data clarity',
+        en: 'Structured knowledge systems for data clarity',
         ko: '지식화 및 가독성 제고를 위한 정보 전달 체계화',
       },
       {
@@ -60,7 +60,7 @@ const researchAreas = [
     image: dimImg,
     items: [
       {
-        en: 'Designing trustworthy intelligent decision systems',
+        en: 'Trustworthy intelligent decision system design',
         ko: '신뢰할 수 있는 지능형 의사결정 시스템 설계 및 최적화',
       },
       {
@@ -68,7 +68,7 @@ const researchAreas = [
         ko: '경영 환경과 산업 현장의 위험을 고려한 정책 지원 도구',
       },
       {
-        en: 'Strategic decision making via multi-perspective insights',
+        en: 'Interdisciplinary approaches to strategic decisions',
         ko: '다각적 통찰을 활용한 전략적 의사결정 방안 모색',
       },
     ],
