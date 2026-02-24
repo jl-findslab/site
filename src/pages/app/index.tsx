@@ -66,6 +66,8 @@ const GlobalMusicPlayer = memo(() => {
   const [isCompact, setIsCompact] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
   const [showQueue, setShowQueue] = useState(false)
+  const [devMode, setDevMode] = useState(false)
+  const keysPressed = useRef<Set<string>>(new Set())
   const queueRef = useRef<HTMLDivElement>(null)
   const location = useLocation()
 
@@ -128,7 +130,7 @@ const GlobalMusicPlayer = memo(() => {
   const currentTrack = trackInfo[currentIndex]
   const isPlaylistPage = location.pathname === '/archives/playlist'
   const isPortfolioPage = location.pathname.startsWith('/members/director/portfolio')
-  const showFullPlayer = !isMinimized && !isCompact && !isHidden && playlist.length > 0 && !isPlaylistPage && isPortfolioPage
+  const showFullPlayer = devMode && !isMinimized && !isCompact && !isHidden && playlist.length > 0 && !isPlaylistPage && isPortfolioPage
 
   // Initialize YouTube Player ONCE
   useEffect(() => {
@@ -208,6 +210,22 @@ const GlobalMusicPlayer = memo(() => {
     }
   }, [isPortfolioPage, isPlaying, setIsPlaying])
 
+  // Ctrl+J+L secret combo to toggle playlist
+  useEffect(() => {
+    const onDown = (e: KeyboardEvent) => {
+      keysPressed.current.add(e.key.toLowerCase())
+      if (e.ctrlKey && keysPressed.current.has('j') && keysPressed.current.has('l')) {
+        e.preventDefault()
+        setDevMode(prev => !prev)
+        setIsHidden(false)
+      }
+    }
+    const onUp = (e: KeyboardEvent) => { keysPressed.current.delete(e.key.toLowerCase()) }
+    window.addEventListener('keydown', onDown)
+    window.addEventListener('keyup', onUp)
+    return () => { window.removeEventListener('keydown', onDown); window.removeEventListener('keyup', onUp) }
+  }, [])
+
   const handleHidePlayer = () => {
     if (playerRef.current) playerRef.current.pauseVideo()
     setIsPlaying(false)
@@ -240,7 +258,7 @@ const GlobalMusicPlayer = memo(() => {
   }, [showQueue, currentIndex])
 
   // 플레이어 안 보여줄 조건 - portfolio 페이지에서만 표시
-  const hidePlayer = isHidden || playlist.length === 0 || isPlaylistPage || !isPortfolioPage
+  const hidePlayer = !devMode || isHidden || playlist.length === 0 || isPlaylistPage || !isPortfolioPage
 
   return (
     <>
