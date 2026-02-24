@@ -199,7 +199,7 @@ const ResumeModal = () => (
           <p className="text-xs font-bold text-gray-900 mb-6">Kyung Hee University <span className="font-normal text-gray-500">(2024-03 – 2024-08)</span></p>
           <ul className="text-xs text-gray-600 space-y-3 ml-12">
             <li className="flex items-start gap-6"><span className="w-3 h-3 rounded-full bg-primary/30 shrink-0 mt-5" />Financial Engineering</li>
-            <li className="flex items-start gap-6"><span className="w-3 h-3 rounded-full bg-primary/30 shrink-0 mt-5" />Engineering Economics</li>
+            <li className="flex items-start gap-6"><span className="w-3 h-3 rounded-full bg-primary/30 shrink-0 mt-5" />Engineering Economy</li>
           </ul>
         </div>
       </div>
