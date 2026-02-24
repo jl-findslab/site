@@ -382,7 +382,7 @@ export const AboutIntroductionTemplate = () => {
                           </div>
                           
                           {/* Title - 선택한 언어만 표시 */}
-                          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-20" style={{ color: '#D6B14D' }}>
+                          <h3 className="text-lg md:text-2xl lg:text-3xl font-bold mb-20" style={{ color: '#D6B14D' }}>
                             {researchLang === 'ko' ? area.titleKo : area.titleEn}
                           </h3>
 
@@ -393,7 +393,7 @@ export const AboutIntroductionTemplate = () => {
                                 <span className="absolute left-0 top-2 w-8 h-8 rounded-full flex items-center justify-center" style={{ background: 'rgba(214, 177, 77, 0.2)' }}>
                                   <span className="w-2 h-2 rounded-full" style={{ background: '#D6B14D' }} />
                                 </span>
-                                <span className="block text-xs md:text-base font-semibold text-gray-300 leading-snug">
+                                <span className="block text-[11px] md:text-base font-semibold text-gray-300 leading-snug">
                                   {researchLang === 'ko' ? item.ko : item.en}
                                 </span>
                               </li>

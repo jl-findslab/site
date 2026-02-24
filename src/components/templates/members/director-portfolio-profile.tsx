@@ -122,7 +122,7 @@ const education: any[] = [
     school: 'Korea Advanced Institute of Science and Technology (KAIST)',
     period: '2025-02',
     degree: 'Doctor of Philosophy in Engineering (Ph.D. in Engineering)',
-    field: 'Department of Industrial and Systems Engineering',
+    field: 'Industrial and Systems Engineering',
     college: 'College of Engineering',
     dissertation: {
       en: 'LUCIDE: A Lucid, User-Centric, Intelligent, Data-Inspired, End-to-End System Framework for Illustrative Decision-Making in Financial Asset Management Services — Orchestrating Transparency-Oriented Financial Investment Solutions via Empirical Evidence and Clairvoyant-Guided Approaches from Iridescent and Analytical Perspectives',
@@ -144,7 +144,7 @@ const education: any[] = [
     school: 'Korea Advanced Institute of Science and Technology (KAIST)',
     period: '2021-02',
     degree: 'Master of Science (M.S.)',
-    field: 'Department of Industrial and Systems Engineering',
+    field: 'Industrial and Systems Engineering',
     college: 'College of Engineering',
     thesis: {
       en: 'Empirical Analysis of Politically-Themed Stocks Using Text Mining Techniques and Entropy-Based Network Dynamics — Focus on the Republic of Korea\'s Case',
@@ -163,7 +163,7 @@ const education: any[] = [
     school: 'Kyung Hee University',
     period: '2018-02',
     degree: 'Bachelor of Engineering (B.E.)',
-    field: 'Department of Industrial and Management Systems Engineering',
+    field: 'Industrial and Management Systems Engineering',
     college: 'College of Engineering',
     undergraduateTheses: [
       {
@@ -893,12 +893,10 @@ export const MembersDirectorPortfolioProfileTemplate = () => {
                           </div>
                           {/* Degree - Largest */}
                           <p className="text-sm md:text-base font-bold text-gray-900 leading-tight">{edu.degree.includes("(Ph.D.") ? <>{edu.degree.split(" (")[0]}<br className="md:hidden" /><span className="text-sm md:text-base text-gray-900 font-bold"> ({edu.degree.split(" (")[1]}</span></> : edu.degree}</p>
-                          {/* School - Medium */}
-                          <p className="text-xs md:text-sm text-gray-500 font-bold mt-2">{edu.school}</p>
                           {/* Field - Department */}
-                          <p className="text-xs md:text-sm font-medium text-gray-600">{edu.field}</p>
-                          {/* College */}
-                          {edu.college && <p className="text-xs md:text-sm text-gray-500">{edu.college}</p>}
+                          <p className="text-xs md:text-sm font-medium text-gray-600 mt-2">{edu.field}</p>
+                          {/* School */}
+                          <p className="text-xs md:text-sm text-gray-500 font-bold">{edu.school}</p>
                         </div>
                       </div>
                       
