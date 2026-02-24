@@ -214,7 +214,7 @@ const GlobalMusicPlayer = memo(() => {
   useEffect(() => {
     const onDown = (e: KeyboardEvent) => {
       keysPressed.current.add(e.key.toLowerCase())
-      if (e.ctrlKey && keysPressed.current.has('j') && keysPressed.current.has('l')) {
+      if (keysPressed.current.has('j') && keysPressed.current.has('l')) {
         e.preventDefault()
         setDevMode(prev => !prev)
         setIsHidden(false)
