@@ -894,7 +894,7 @@ export const MembersDirectorPortfolioProfileTemplate = () => {
                           {/* Degree - Largest */}
                           <p className="text-sm md:text-base font-bold text-gray-900 leading-tight">{edu.degree.includes("(Ph.D.") ? <>{edu.degree.split(" (")[0]}<br className="md:hidden" /><span className="text-sm md:text-base text-gray-900 font-bold"> ({edu.degree.split(" (")[1]}</span></> : edu.degree}</p>
                           {/* Field - Department */}
-                          <p className="text-xs md:text-sm font-medium text-gray-600 mt-2">{edu.field}</p>
+                          <p className="text-xs md:text-sm font-bold text-gray-600 mt-2">{edu.field}</p>
                           {/* School */}
                           <p className="text-xs md:text-sm text-gray-500 font-bold">{edu.school}</p>
                         </div>
