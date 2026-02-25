@@ -567,6 +567,15 @@
             "type": "SSCI",
             "since": "2026-02-19",
             "url": "https://inzeko.ktu.lt/index.php/EE"
+        },
+        {
+            "id": 61,
+            "category": "journal",
+            "name": "International Journal of Strategic Property Management",
+            "publisher": "Vilnius Gediminas Technical University",
+            "type": "SSCI",
+            "since": "2026-02-26",
+            "url": "https://journals.vilniustech.lt/index.php/IJSPM"
         }
     ]
 }
