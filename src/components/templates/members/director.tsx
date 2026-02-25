@@ -910,9 +910,6 @@ export const MembersDirectorTemplate = () => {
                       }`}/>
                     </div>
                     <div className="flex flex-col md:flex-row items-start gap-12 md:gap-16 bg-white border border-gray-100 rounded-lg md:rounded-xl p-12 md:p-16 hover:shadow-lg hover:shadow-[#D6B14D]/10 hover:border-[#D6B14D]/40 hover:bg-gradient-to-r hover:from-white hover:to-primary/[0.02] transition-all duration-300 min-h-[100px] md:min-h-[110px]">
-                      <div className="size-48 md:size-44 bg-gray-50 rounded-lg p-6 flex items-center justify-center shrink-0">
-                        <img loading="lazy" decoding="async" src={emp.logo} alt={emp.organization || emp.position} className="w-full h-full object-contain"/>
-                      </div>
                       <div className="flex-1 min-w-0 flex flex-col justify-center text-left">
                         <div className="flex flex-wrap items-center justify-start gap-6 md:gap-8 mb-4">
                           <span className={`px-8 md:px-10 py-2 text-[10px] md:text-xs font-bold rounded-full ${
@@ -985,13 +982,6 @@ export const MembersDirectorTemplate = () => {
                             return (
                               <div key={index} className="bg-white border border-gray-100 rounded-lg md:rounded-xl p-12 md:p-16 hover:shadow-lg hover:shadow-gray-200/50 transition-all duration-300">
                                 <div className="flex flex-col md:flex-row items-start gap-12 md:gap-16">
-                                  <div className="size-48 md:size-44 bg-gray-50 rounded-lg p-6 flex items-center justify-center shrink-0 overflow-hidden">
-                                    {schoolLogo ? (
-                                      <img loading="lazy" decoding="async" src={schoolLogo} alt={course.school} className="w-full h-full object-contain" />
-                                    ) : (
-                                      <BookOpen size={18} style={{color: '#D6B14D'}} />
-                                    )}
-                                  </div>
                                   <div className="flex-1 min-w-0 text-left">
                                     <div className="flex flex-wrap items-center justify-start gap-6 mb-8">
                                       {course.periods.map((period, i) => (
