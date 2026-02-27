@@ -111,11 +111,14 @@ const GlobalMusicPlayer = memo(() => {
             return { videoId, artist: item.artist || 'Unknown Artist', title: item.title || 'Unknown Title' }
           }).filter((item: { videoId: string | null }) => item.videoId)
           
-          if (data.shuffle) {
-            for (let i = items.length - 1; i > 0; i--) {
+          if (data.shuffle && items.length > 1) {
+            const first = items[0]
+            const rest = items.slice(1)
+            for (let i = rest.length - 1; i > 0; i--) {
               const j = Math.floor(Math.random() * (i + 1));
-              [items[i], items[j]] = [items[j], items[i]]
+              [rest[i], rest[j]] = [rest[j], rest[i]]
             }
+            items.splice(0, items.length, first, ...rest)
           }
           
           setTrackInfo(items.map((item: { artist: string; title: string }) => ({ artist: item.artist, title: item.title })))
